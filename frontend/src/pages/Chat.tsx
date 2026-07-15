@@ -137,7 +137,7 @@ export default function Chat() {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <ScrollArea className="flex-1">
+      <ScrollArea className="min-h-0 flex-1">
         <div className="mx-auto w-full max-w-3xl space-y-10 px-4 pb-10 pt-2 sm:px-6">
           {exchanges === null ? (
             <div className="space-y-4">
