@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# environment variables (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# build output
+dist/
+out/
+build/
+*.tgz
+
+# logs
+logs/
+*.log
+
+# caches
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# test coverage
+coverage/
+*.lcov
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# editors / tools
+.idea/
+.vscode/
+.claude/settings.local.json
