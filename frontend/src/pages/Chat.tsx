@@ -138,17 +138,23 @@ export default function Chat() {
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <ScrollArea className="flex-1">
-        <div className="mx-auto w-full max-w-3xl space-y-8 px-6 py-8">
+        <div className="mx-auto w-full max-w-3xl space-y-10 px-4 pb-10 pt-2 sm:px-6">
           {exchanges === null ? (
             <div className="space-y-4">
-              <Skeleton className="h-7 w-2/3" />
+              <Skeleton className="h-8 w-2/3" />
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <Skeleton className="h-20" />
+                <Skeleton className="h-20" />
+                <Skeleton className="h-20" />
+                <Skeleton className="h-20" />
+              </div>
               <Skeleton className="h-4 w-full" />
               <Skeleton className="h-4 w-full" />
               <Skeleton className="h-4 w-1/2" />
             </div>
           ) : (
             exchanges.map((exchange, index) => (
-              <div key={index} className="space-y-8">
+              <div key={index} className="space-y-10">
                 {index > 0 && <Separator />}
                 <ExchangeView
                   exchange={exchange}
@@ -163,7 +169,7 @@ export default function Chat() {
         </div>
       </ScrollArea>
 
-      <div className="border-t bg-background p-4">
+      <div className="shrink-0 px-4 pb-4 pt-1 sm:px-6 md:pb-6">
         <div className="mx-auto w-full max-w-3xl">
           <ChatInput onSubmit={ask} disabled={streaming} placeholder="Ask a follow-up..." />
         </div>

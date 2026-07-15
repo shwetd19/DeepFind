@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router";
-import { Sparkles } from "lucide-react";
+import { BookOpen, Cpu, Sparkles, TrendingUp, type LucideIcon } from "lucide-react";
 import { ChatInput } from "@/components/chat/ChatInput";
 import { Button } from "@/components/ui/button";
 
-const SUGGESTIONS = [
-  "What are the best ways to learn Rust in 2026?",
-  "Compare Bun vs Node.js for production APIs",
-  "What is retrieval-augmented generation?",
+const SUGGESTIONS: { icon: LucideIcon; label: string }[] = [
+  { icon: TrendingUp, label: "What are the best ways to learn Rust in 2026?" },
+  { icon: Cpu, label: "Compare Bun vs Node.js for production APIs" },
+  { icon: BookOpen, label: "What is retrieval-augmented generation?" },
 ];
 
 export default function Home() {
@@ -17,30 +17,33 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center p-6">
+    <div className="flex flex-1 flex-col items-center justify-center px-4 pb-20">
       <div className="w-full max-w-2xl space-y-8">
-        <div className="space-y-2 text-center">
-          <div className="flex items-center justify-center gap-2">
-            <Sparkles className="size-7 text-primary" />
-            <h1 className="text-3xl font-semibold tracking-tight">DeepFind</h1>
+        <div className="space-y-3 text-center">
+          <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary/10">
+            <Sparkles className="size-6 text-primary" />
           </div>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            What do you want to know?
+          </h1>
           <p className="text-muted-foreground">
             Ask anything. DeepFind searches the web and answers with sources.
           </p>
         </div>
 
-        <ChatInput onSubmit={ask} autoFocus placeholder="What do you want to know?" />
+        <ChatInput variant="hero" onSubmit={ask} autoFocus placeholder="Ask anything..." />
 
         <div className="flex flex-wrap justify-center gap-2">
-          {SUGGESTIONS.map(suggestion => (
+          {SUGGESTIONS.map(({ icon: Icon, label }) => (
             <Button
-              key={suggestion}
+              key={label}
               variant="outline"
               size="sm"
-              className="h-auto whitespace-normal py-1.5 font-normal text-muted-foreground"
-              onClick={() => ask(suggestion)}
+              className="h-auto gap-2 whitespace-normal rounded-full bg-transparent py-1.5 font-normal text-muted-foreground hover:text-foreground"
+              onClick={() => ask(label)}
             >
-              {suggestion}
+              <Icon className="size-3.5 shrink-0 text-primary" />
+              {label}
             </Button>
           ))}
         </div>
